@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Ticket Desk</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div class="header"> 
+        <div class="header-left-side">
+            <p class="title">IT Ticket Desk</p>
+            <p class="subtitle">Gestisci le tue segnalazioni informatiche</p>
+        </div>
+        <div class="header-right-side">
+            <button class="header-button" type="button">⇐ Tutti i ticket</button>
+        </div>
+        
+        
+    </div>
+
+    
+    <div class="new-ticket-container">
+        <p class="new-ticket-title">Nuovo ticket</p>
+        <p class="new-ticket-subtitle">Descrivi il problema che stai riscontrando: il team di supporto lo prenderà in carico.</p>
+        <div class="new-ticket-form-container">
+            <div class="new-ticket-header">
+                <p class="new-ticket-header-title">NUOVA RICHIESTA</p>
+                <p class="new-ticket-header-status">● Aperto</p>
+            </div>
+            <div class="new-ticket-separator">
+                <span  class="dot"></span >
+                <hr class="line"></hr>
+                <span  class="dot"></span >
+            </div>
+            <form class="ticket-form" id="ticket-form">
+                <label class="ticket-name-label" for="ticket-name">Nome del ticket<span class="required"> *</span></label>
+                <input class="ticket-name" type="text" id="ticket-name" placeholder="Es. Stampante non funzionante" required minlength="3" maxlength="100">
+
+                <label class="ticket-description-label" for="ticket-description">Descrizione del problema<span class="required"> *</span></label>
+                <textarea class="ticket-description" id="ticket-description" placeholder="Descrivi il problema nel dettaglio: cosa è successo, quando e su quale dispositivo" required minlength="10" maxlength="2000"></textarea>
+
+                <label class="ticket-priority-label" for="ticket-priority">Priorità</label>
+                <select class="ticket-priority" id="ticket-priority">
+                    <option value="bassa">🟢 Bassa</option>
+                    <option value="media" selected>🟡 Media</option>
+                    <option value="alta">🔴 Alta</option>
+                </select>
+
+                <button class="form-button" type="submit">+ Crea ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <button id="refresh-tickets">Aggiorna tickets</button>
+    <p class="feedback" id="feedback" role="status"></p>
+    
+    <label for="filter-search">Cerca ticket</label>
+    <input type="search" id="filter-search">
+    
+    <label for="filter-status">Stato:</label>
+    <select name="" id="filter-status">
+        <option value="">Tutti</option>
+        <option value="aperto">Aperto</option>
+        <option value="in lavorazione">In lavorazione</option>
+        <option value="risolto">Risolto</option>
+    </select>
+    
+    <label for="filter-priority">Priorità:</label>
+    <select name="" id="filter-priority">
+        <option value="">Tutti</option>
+        <option value="bassa">Bassa</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+    </select>
+    
+    <div id="ticket-list"></div>
+</body>
+</html>
+
