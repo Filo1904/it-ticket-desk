@@ -65,11 +65,12 @@ body {
     align-content: center;
 }
 
-.header-button {
+.header-link {
     font-size: 18px;
     background-color: white;
     border: none;
     color: var(--accent);
+    text-decoration: none;
 }
 
 .new-ticket-container {

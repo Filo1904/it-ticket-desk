@@ -29,6 +29,10 @@ class TicketUpdate(BaseModel):
 def home():
     return FileResponse(BASE_DIR / "static" / "index.html")
 
+@app.get("/new-ticket")
+def new_ticket_page():
+    return FileResponse(BASE_DIR / "static" / "new-ticket.html")
+
 @app.get("/tickets")
 def list_tickets(status : Literal["aperto", "in lavorazione", "risolto"] | None = None, search : str | None = None, priority : Literal["bassa", "media", "alta"] | None = None):
     connection = get_connection()
