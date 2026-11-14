@@ -39,9 +39,35 @@ async function loadTickets() {
             const card = document.createElement("article");
             card.className = "ticket-card";
 
-            const paragraph = document.createElement("p");
-            let createdAtText = "Data non disponibile";
+            const upperCard = document.createElement("div");
+            upperCard.className = "upper-card"
 
+            const bottomCard = document.createElement("div");
+            bottomCard.className = "bottom-card"
+
+            const ticketName = document.createElement("p");
+            ticketName.className = "ticket-name";
+            ticketName.textContent = ticket.name;
+
+            const ticketPriority = document.createElement("p");
+            ticketPriority.className = "ticket-priority";
+            ticketPriority.textContent = "Priorità: " + ticket.priority;
+
+            const ticketStatus = document.createElement("p");
+            ticketStatus.className = "ticket-status";
+            ticketStatus.textContent = "Status: " + ticket.status;
+
+            const ticketDescription = document.createElement("p");
+            ticketDescription.className = "ticket-description";
+            ticketDescription.textContent = ticket.description;
+
+            const ticketDate = document.createElement("p");
+            ticketDate.className = "ticket-date";
+            ticketDate.textContent = ticket.created_at
+                ? new Date(ticket.created_at).toLocaleString("it-IT", {
+                    timeZone: "Europe/Rome"
+                })
+                : "Data non disponibile";
             if (ticket.created_at) {
                 createdAtText = new Date(ticket.created_at).toLocaleString(
                     "it-IT",
@@ -49,27 +75,24 @@ async function loadTickets() {
                 );
             }
 
-            paragraph.textContent =
-                `Nome: ${ticket.name} | Stato: ${ticket.status} | ` +
-                `Priorità: ${ticket.priority} | Data e ora: ${createdAtText}`;
+            card.append(upperCard, bottomCard);
 
-            card.appendChild(paragraph);
+            upperCard.append(ticketName, ticketPriority, ticketStatus, ticketDate)
 
-            const ticketDescription = document.createElement("p");
-            ticketDescription.textContent = ticket.description;
-            card.appendChild(ticketDescription);
+            bottomCard.appendChild(ticketDescription)
 
             if (ticket.status !== "risolto") {
                 const statusButton = document.createElement("button");
                 statusButton.type = "button";
-                statusButton.textContent = ticket.status === "aperto"
+                statusButton.className = "simple-button ticket-button"
+                statusButton.textContent = ticket.status === "Aperto"
                     ? "Prendi in carico"
                     : "Segna come risolto";
 
                 statusButton.addEventListener("click", async function () {
-                    const newStatus = ticket.status === "aperto"
-                        ? "in lavorazione"
-                        : "risolto";
+                    const newStatus = ticket.status === "Aperto"
+                        ? "In lavorazione"
+                        : "Risolto";
 
                     statusButton.disabled = true;
 
@@ -96,9 +119,8 @@ async function loadTickets() {
                     }
                 });
 
-                card.appendChild(statusButton);
+                if(ticket.status !== "Risolto") bottomCard.appendChild(statusButton)
             }
-
             container.appendChild(card);
         });
 

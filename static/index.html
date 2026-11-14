@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT Ticket Desk</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/common.css">
+    <link rel="stylesheet" href="/static/tickets.css">
     <script src="/static/script.js" defer></script>
 </head>
 <body>
@@ -18,31 +19,43 @@
         </div>
     </div>
 
-    
 
-    <button id="refresh-tickets">Aggiorna tickets</button>
+    <div class="filters-container">
+        <div class="filters-box">
+            <div class="search-box">
+                <input class="input-field" type="search" id="filter-search" placeholder="Es. Problemi con Internet">
+            </div>
+
+            <div class="filters">
+                <div class="status-box">
+                    <label for="filter-status">Stato:</label>
+                    <select class="input-field" name="" id="filter-status">
+                        <option value="">Tutti</option>
+                        <option value="Aperto">Aperto</option>
+                        <option value="In lavorazione">In lavorazione</option>
+                        <option value="Risolto">Risolto</option>
+                    </select>
+                </div>
+                <div class="priority-box">
+                    <label for="filter-priority">Priorità:</label>
+                    <select class="input-field" name="" id="filter-priority">
+                        <option value="">Tutti</option>
+                        <option value="Bassa">Bassa</option>
+                        <option value="Media">Media</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="update-button">
+            <button class="simple-button" id="refresh-tickets">Aggiorna tickets</button>
+        </div>
+    </div>
+
     <p class="feedback" id="feedback" role="status"></p>
-    
-    <label for="filter-search">Cerca ticket</label>
-    <input type="search" id="filter-search">
-    
-    <label for="filter-status">Stato:</label>
-    <select name="" id="filter-status">
-        <option value="">Tutti</option>
-        <option value="aperto">Aperto</option>
-        <option value="in lavorazione">In lavorazione</option>
-        <option value="risolto">Risolto</option>
-    </select>
-    
-    <label for="filter-priority">Priorità:</label>
-    <select name="" id="filter-priority">
-        <option value="">Tutti</option>
-        <option value="bassa">Bassa</option>
-        <option value="media">Media</option>
-        <option value="alta">Alta</option>
-    </select>
-    
-    <div id="ticket-list"></div>
+
+    <div class="ticket-list" id="ticket-list"><article class="ticket-card"><div class="upper-card"><p class="ticket-name">12345678</p><p class="ticket-priority"></p><p class="ticket-status">risolto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description">stringstri</p></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">asdsadsadasdsadas</p><p class="ticket-priority">alta</p><p class="ticket-status">aperto</p><p class="ticket-date">13/11/2026, 22:45:17</p></div><div class="bottom-card"><p class="ticket-description">sdaasdsadasddsdasddsdsasda</p><button type="button">Prendi in carico</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">ABCDEFG</p><p class="ticket-priority">alta</p><p class="ticket-status">in lavorazione</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description">stringstri</p><button type="button">Segna come risolto</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Non funiziona un cazzo amici</p><p class="ticket-priority">media</p><p class="ticket-status">risolto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description">Questa è una descrizione valida forse bob foo lol XD11!111!1!11!!!!</p></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Sono il boss dell'informatica moderna</p><p class="ticket-priority">media</p><p class="ticket-status">risolto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description"></p></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">RAM scadente</p><p class="ticket-priority">media</p><p class="ticket-status">aperto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description"></p><button type="button">Prendi in carico</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Internet lento</p><p class="ticket-priority">media</p><p class="ticket-status">risolto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description"></p></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Stampante non funzionante</p><p class="ticket-priority">media</p><p class="ticket-status">aperto</p><p class="ticket-date">Data non disponibile</p></div><div class="bottom-card"><p class="ticket-description"></p><button type="button">Prendi in carico</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">saddsadawdwa</p><p class="ticket-priority">bassa</p><p class="ticket-status">aperto</p><p class="ticket-date">13/11/2026, 17:54:25</p></div><div class="bottom-card"><p class="ticket-description">adwwasdqwaawwqeqwde</p><button type="button">Prendi in carico</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Test per js</p><p class="ticket-priority">bassa</p><p class="ticket-status">aperto</p><p class="ticket-date">13/11/2026, 17:52:20</p></div><div class="bottom-card"><p class="ticket-description">questo è un test per js</p><button type="button">Prendi in carico</button></div></article><article class="ticket-card"><div class="upper-card"><p class="ticket-name">Un'altra prova</p><p class="ticket-priority">bassa</p><p class="ticket-status">risolto</p><p class="ticket-date">13/11/2026, 16:51:14</p></div><div class="bottom-card"><p class="ticket-description">ma questa volta con la data XD lol</p></div></article></div>
 </body>
 </html>
 

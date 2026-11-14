@@ -19,11 +19,11 @@ app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 class TicketCreate(BaseModel):
     name: str = Field(min_length=3, max_length=100)
     description : str = Field(min_length=10, max_length=2000)
-    priority: Literal["bassa", "media", "alta"] = "media"
+    priority: Literal["Bassa", "Media", "Alta"] = "media"
 
 class TicketUpdate(BaseModel):
-    status : Literal["aperto", "in lavorazione", "risolto"] | None = None
-    priority : Literal["bassa", "media", "alta"] | None = None
+    status : Literal["Aperto", "In lavorazione", "Risolto"] | None = None
+    priority : Literal["Bassa", "Media", "Alta"] | None = None
 
 @app.get("/")
 def home():
@@ -34,15 +34,15 @@ def new_ticket_page():
     return FileResponse(BASE_DIR / "static" / "new-ticket.html")
 
 @app.get("/tickets")
-def list_tickets(status : Literal["aperto", "in lavorazione", "risolto"] | None = None, search : str | None = None, priority : Literal["bassa", "media", "alta"] | None = None):
+def list_tickets(status : Literal["Aperto", "In lavorazione", "Risolto"] | None = None, search : str | None = None, priority : Literal["Bassa", "Media", "Alta"] | None = None):
     connection = get_connection()
     try:
         rows = connection.execute("""
         SELECT * FROM tickets ORDER BY
         CASE priority
-        WHEN 'alta' THEN 1
-        WHEN 'media' THEN 2
-        WHEN 'bassa' THEN 3
+        WHEN 'Alta' THEN 1
+        WHEN 'Media' THEN 2
+        WHEN 'Bassa' THEN 3
         END ASC,
         created_at DESC,
         id DESC"""
@@ -86,7 +86,7 @@ def create_ticket(data: TicketCreate):
     finally:
         connection.close()
 
-    new_ticket = {"id": new_id, "name": data.name, "description": data.description, "priority": data.priority, "status": "aperto", "created_at": created_at}
+    new_ticket = {"id": new_id, "name": data.name, "description": data.description, "priority": data.priority, "status": "Aperto", "created_at": created_at}
     return new_ticket
 
 

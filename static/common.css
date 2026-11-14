@@ -1,0 +1,114 @@
+:root {
+    --accent: #3a4fe6;
+    --accent-dark: #2d3fc4;
+    --accent-soft: rgba(58, 79, 230, 0.12);
+    --accent-ring: rgba(58, 79, 230, 0.25);
+
+    --bg: #f2f5f8;
+    --surface: #ffffff;
+    --border: #c9d0dc;
+    --border-hover: #a9b2c3;
+    --border-soft: #e2e6ee;
+
+    --text: #12161f;
+    --text-muted: #5b6475;
+    --placeholder: #5f6879;
+    --danger: #c62f2f;
+
+    --radius-card: 24px;
+    --radius-field: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+}
+
+.header {
+    height: 100px;
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px 40px;
+    background-color: var(--surface);
+    border-bottom: 2px solid var(--border);
+    box-shadow: 0 3px 8px rgb(0 0 0 / 8%);
+}
+
+.header-left-side {
+    width: fit-content;
+    height: 100%;
+    align-content: center;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--placeholder);
+}
+
+.header-right-side {
+    width: fit-content;
+    height: 100%;
+    align-content: center;
+}
+
+.header-link {
+    font-size: 18px;
+    background-color: var(--surface);
+    border: none;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+
+.input-field {
+    margin-top: 15px;
+    background-color: var(--bg);
+    padding: 10px;
+    border: 2px solid rgb(210, 212, 214);
+    border-radius: var(--radius-field);
+    box-shadow: 0 0 10px 3px rgba(221, 231, 243, 0.5);
+}
+
+.input-field:focus {
+    background-color: var(--bg);
+    padding: 10px;
+    outline: none;
+    border: 2px solid rgb(58, 79, 230, 0.6);
+    border-radius: var(--radius-field);
+    box-shadow: 0 0 10px 3px rgba(58, 79, 230, 0.5);
+}
+
+.simple-button {
+    margin-top: 32px;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--surface);
+    background-color: var(--accent);
+    border: none;
+    border-radius: var(--radius-field);
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--accent-ring);
+    transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.simple-button:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--accent-ring);
+}
